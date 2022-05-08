@@ -2,15 +2,22 @@ import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(17, GPIO.OUT)
-GPIO.setup(27, GPIO.IN)
-GPIO.setup(22, GPIO.OUT)
-GPIO.output(17, GPIO.HIGH)
+GPIO.setup(17, GPIO.OUT) # Power
+GPIO.setup(27, GPIO.IN) # Input button 1
+GPIO.setup(27, GPIO.IN) # Input button 2
+GPIO.output(17, GPIO.HIGH) # Turn ON power
 
-print(GPIO.input(27))
-while(True):
+
+def button_1():
     if GPIO.input(27) == 0:
-        GPIO.output(22, GPIO.HIGH)
+        return True
     else:
-        GPIO.output(22, GPIO.LOW)
+        return False
+
+def button_2():
+    if GPIO.input(27) == 0:
+        return True
+    else:
+        return False
+
 #GPIO.cleanup()
