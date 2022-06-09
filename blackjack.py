@@ -53,5 +53,5 @@ while True:
     stepper.go_to_pos(0, rpm)
     dc.d_card()
             
-    #Code for registering dealer cards
+    #Code for registering dealer card
 
