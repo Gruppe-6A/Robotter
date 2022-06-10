@@ -24,6 +24,6 @@ def button_2():
     
 #while True:
 #    button_1()
-#     button_2()
+#    button_2()
 #    time.sleep(0.2)
 #GPIO.cleanup()

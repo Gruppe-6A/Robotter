@@ -50,9 +50,9 @@ def go_to_pos(degree, rpm):
         step(True, abs(diff), rpm)
     else:
         step(False, abs(diff), rpm)
-go_to_pos(-30, 4)
+#go_to_pos(-30, 4)
 #print(current_degree)
 #time.sleep(1)
-#go_to_pos(-90, 4)
+#go_to_pos(-90, 5)
 #print(current_degree)
 #GPIO.cleanup()

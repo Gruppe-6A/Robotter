@@ -2,6 +2,7 @@ import numpy as np
 import pytesseract
 import cv2
 
+
 tesseract_cmd = r'/usr/bin/tesseract'
 
 def get_card_value():
@@ -9,7 +10,7 @@ def get_card_value():
     x  =0
     text = ''
     #while True:
-    while(text not in ['0','1','2','3','4','5','6','7','8','9','A','J','Q','K']):
+    while(text not in ['2','3','4','5','6','7','8','9','A','J','Q','K']):
         ret, frame = cap.read()
         frame = cv2.rotate(frame, cv2.cv2.ROTATE_90_CLOCKWISE)
         frame = cv2.rotate(frame, cv2.cv2.ROTATE_90_CLOCKWISE)
@@ -28,8 +29,13 @@ def get_card_value():
         
         config = ('-l eng -c tessedit_char_whitelist=0123456789AJQK --oem 1 --psm 8')
         text = pytesseract.image_to_string(thresh, config=config).strip('\n\x0c')
+        print(text)
         
     cap.release()
     cv2.destroyAllWindows()            
-    return text
+    return card_value(text)
 
+def card_value(card):
+    value_lookup = {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
+                    '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10, '%': 3, 'i': 10}
+    return value_lookup[card]

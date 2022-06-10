@@ -1,7 +1,7 @@
 from ast import Or
 import time
 import button as buttons
-import dc as dc
+import dc2 as dc
 import ThomasStabileKode as stepper
 import carddetection as cd
 import numpy as np
@@ -9,8 +9,8 @@ import numpy as np
 player_count = 0
 max_player_count = 3
 max_turn = 90
-player_positions = np.zeros[max_player_count]
-player_cards = []
+player_positions = []
+player_cards = np.zeros(max_player_count)
 card_spacing = 2
 rpm = 2
 sleep_duration = 0.5
@@ -67,7 +67,9 @@ while True:
             
     #Deal cards to dealer
     stepper.go_to_pos(0, rpm)
+    print('dealer value: ', dealer_card) 
     while dealer_card<17:
         dealer_card += next_card
         dc.d_card()
         next_card = cd.get_card_value()
+        print('dealer value: ', dealer_card)
